@@ -153,7 +153,6 @@ public class AdminMain extends JFrame {
         JScrollPane sScroll = new JScrollPane(sTable);
         sTablePanel.add(sScroll, BorderLayout.CENTER);
 
-        // ======================================
         // 교수 관리 패널
         JPanel pPanel = new JPanel();
         pPanel.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
@@ -178,7 +177,7 @@ public class AdminMain extends JFrame {
 
         // 필드 추가하기
         JTextField pTextField[] = new JTextField[5];
-        String[] positionString = {"교수", "부교수", "조교수", "전임교원", "명예교수"};
+        String[] positionString = {"정교수", "부교수", "조교수", "전임교원", "명예교수"};
         JComboBox<String> pPositionCombo = new JComboBox<>(positionString);
         for (int i = 0; i < pLabel.length; i++) {
             // 직책은 ComboBox로 구현
@@ -208,7 +207,7 @@ public class AdminMain extends JFrame {
                 if (password.equals("") || name.equals("") || major.equals("")) {
                     JOptionPane.showMessageDialog(getRootPane(), "모든 항목을 입력해주세요.", "", JOptionPane.WARNING_MESSAGE);
                 }
-                // 서버에 학생 정보 등록
+                // 서버에 교수 정보 등록
                 else {
                     try {
                         Professor professor = new Professor(id, password, name, position, major);
