@@ -10,7 +10,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 public class ProfessorMain extends JFrame {
-    // 학번 값이 전달되어 저장되는 변수
+    // 아이디 값이 전달되어 저장되는 변수
     public static int id;
 
     public ProfessorMain() {
