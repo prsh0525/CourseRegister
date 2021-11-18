@@ -58,7 +58,7 @@ public class ProfessorMain extends JFrame {
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLayout(new BorderLayout());
 
-        // 루트 패널 (팀장 추가)
+        // 루트 패널
         JPanel rootPanel = new JPanel();
         rootPanel.setLayout(new GridBagLayout());
         rootPanel.setBorder(new EmptyBorder(3, 3, 3, 3));
@@ -72,7 +72,7 @@ public class ProfessorMain extends JFrame {
             PersonalInfoPanel.setBorder(new TitledBorder(
                     new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)),
                     "교수 정보", TitledBorder.LEADING, TitledBorder.TOP, null, Color.BLACK));
-            gbAdd(rootPanel, PersonalInfoPanel, 0, 0, 2, 1, 1, 1);
+            gbAdd(rootPanel, PersonalInfoPanel, 0, 0, 1, 1, 1, 1);
             PersonalInfoPanel.setLayout(new BorderLayout());
 
             Professor professor = null;
@@ -97,6 +97,7 @@ public class ProfessorMain extends JFrame {
 
             //직책 라벨
             JLabel RoleLabel = new JLabel("직책: " + professor.position);
+            RoleLabel.setBorder(BorderFactory.createEmptyBorder(3, 0, 0, 0));
             infoInnerPanel.add(RoleLabel);
 
             //학과 라벨
@@ -113,7 +114,7 @@ public class ProfessorMain extends JFrame {
             RegistPanel.setBorder(new TitledBorder(
                     new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)),
                     "강의 등록", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
-            gbAdd(rootPanel, RegistPanel, 0, 1, 2, 4, 1, 10);
+            gbAdd(rootPanel, RegistPanel, 0, 1, 1, 4, 1, 10);
             RegistPanel.setLayout(new BorderLayout());
 
             // 컴포넌트 패널
@@ -387,7 +388,7 @@ public class ProfessorMain extends JFrame {
             LectureListPanel.setBorder(new TitledBorder(
                     new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)),
                     "강의 목록", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
-            gbAdd(rootPanel, LectureListPanel, 2, 0, 5, 5, 10, 1);
+            gbAdd(rootPanel, LectureListPanel, 1, 0, 5, 5, 100, 1);
 
             // 테이블
             LectureListPanel.setLayout(new BorderLayout());
@@ -450,7 +451,7 @@ public class ProfessorMain extends JFrame {
             TablePanel.setBorder(
                     new TitledBorder(null, "시간표", TitledBorder.LEADING, TitledBorder.TOP, null, null));
             TablePanel.setLayout(new BorderLayout());
-            gbAdd(rootPanel, TablePanel, 7, 0, 2, 5, 1, 1);
+            gbAdd(rootPanel, TablePanel, 6, 0, 2, 5, 1, 1);
 
             TablePanel.add(timeTablePanel, BorderLayout.CENTER);
         }
@@ -525,6 +526,14 @@ public class ProfessorMain extends JFrame {
         table.getTableHeader().setResizingAllowed(false);
         table.getColumnModel().getColumn(7).setCellRenderer(new DeleteButtonCell());
         table.getColumnModel().getColumn(7).setCellEditor(new DeleteButtonCell());
+
+        // 행의 크기를 지정한다
+        table.getColumnModel().getColumn(0).setMaxWidth(50);
+        table.getColumnModel().getColumn(1).setMaxWidth(100);
+        table.getColumnModel().getColumn(3).setMaxWidth(50);
+        table.getColumnModel().getColumn(5).setMaxWidth(100);
+        table.getColumnModel().getColumn(6).setMaxWidth(50);
+        table.getColumnModel().getColumn(7).setMaxWidth(100);
 
         timeTablePanel.updateTimeTable(plectList);
     }

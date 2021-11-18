@@ -152,9 +152,9 @@ class TimeTablePanel extends JPanel {
 
                     Color tmpColor;
                     if (!colorTemplate.containsKey(timeTable[i][j])) {
-                        int r = rand.nextInt(50) + 200;
-                        int g = rand.nextInt(50) + 200;
-                        int b = rand.nextInt(50) + 200;
+                        int r = rand.nextInt(25) * 2 + 180;
+                        int g = rand.nextInt(25) * 2 + 180;
+                        int b = rand.nextInt(25) * 2 + 180;
                         tmpColor = new Color(r, g, b);
                         colorTemplate.put(timeTable[i][j], tmpColor);
                     }

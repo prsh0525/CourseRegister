@@ -23,7 +23,7 @@ class NumStudent extends JDialog {
      * Create the dialog.
      */
     public NumStudent(int id, String titleName) {
-        setBounds(100, 100, 400, 300);
+        setBounds(100, 100, 300, 200);
         setLayout(new BorderLayout());
         setTitle(titleName + "(" + id +") 수강인원");
         setResizable(false);
