@@ -333,6 +333,11 @@ public class StudentMain extends JFrame {
 
     private void checkAvailable(int lectureId) {
         try {
+            // 기본 값 : 신청 가능
+            infoLabel.setText("수강 신청 가능한 강의입니다.");
+            registerButton.setText("신청");
+            registerButton.setEnabled(true);
+
             // 없는 강의를 입력한 경우 안내 출력
             if (!lectureExists(lectureId)) {
                 infoLabel.setText("올바른 강의 번호를 입력해주세요.");
@@ -362,12 +367,6 @@ public class StudentMain extends JFrame {
             if (isTimeDuplicated(lectureId)) {
                 infoLabel.setText("기존 강의와 시간이 중복됩니다.");
                 registerButton.setEnabled(false);
-            }
-            // 최종적으로 수강 신청 가능하므로 버튼 활성화
-            else {
-                infoLabel.setText("수강 신청 가능한 강의입니다.");
-                registerButton.setText("신청");
-                registerButton.setEnabled(true);
             }
         }
         catch (Exception ex) {
