@@ -71,7 +71,7 @@ public class ProfessorMain extends JFrame {
             JPanel PersonalInfoPanel = new JPanel();
             PersonalInfoPanel.setBorder(new TitledBorder(
                     new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)),
-                    "교수 정보", TitledBorder.LEADING, TitledBorder.TOP, null, Color.BLACK));
+                    " 교수 정보 ", TitledBorder.LEADING, TitledBorder.TOP, null, Color.BLACK));
             gbAdd(rootPanel, PersonalInfoPanel, 0, 0, 1, 1, 1, 1);
             PersonalInfoPanel.setLayout(new BorderLayout());
 
@@ -113,7 +113,7 @@ public class ProfessorMain extends JFrame {
             JPanel RegistPanel = new JPanel();
             RegistPanel.setBorder(new TitledBorder(
                     new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)),
-                    "강의 등록", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+                    " 강의 등록 ", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
             gbAdd(rootPanel, RegistPanel, 0, 1, 1, 4, 1, 10);
             RegistPanel.setLayout(new BorderLayout());
 
@@ -387,7 +387,7 @@ public class ProfessorMain extends JFrame {
             JPanel LectureListPanel = new JPanel();
             LectureListPanel.setBorder(new TitledBorder(
                     new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)),
-                    "강의 목록", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+                    " 강의 목록 ", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
             gbAdd(rootPanel, LectureListPanel, 1, 0, 5, 5, 100, 1);
 
             // 테이블
@@ -449,21 +449,13 @@ public class ProfessorMain extends JFrame {
         {
             JPanel TablePanel = new JPanel();
             TablePanel.setBorder(
-                    new TitledBorder(null, "시간표", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+                    new TitledBorder(null, " 시간표 ", TitledBorder.LEADING, TitledBorder.TOP, null, null));
             TablePanel.setLayout(new BorderLayout());
             gbAdd(rootPanel, TablePanel, 6, 0, 2, 5, 1, 1);
 
             TablePanel.add(timeTablePanel, BorderLayout.CENTER);
         }
 
-        // 여기는 수정하지 마세요.
-        addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosing(WindowEvent e) {
-                super.windowClosing(e);
-                new Home();
-            }
-        });
         setVisible(true);
     }
 

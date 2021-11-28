@@ -1,17 +1,12 @@
 package professor;
 
 import server.Student;
-import server.Lecture;
 import server.ServerConnection;
-import student.StudentMain;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
 import static javax.swing.JOptionPane.WARNING_MESSAGE;

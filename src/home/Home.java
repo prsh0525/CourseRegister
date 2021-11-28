@@ -173,7 +173,6 @@ public class Home extends JFrame {
                             if (student != null && studentId == student.id && studentPw.equals(student.password)) {
                                 StudentMain.id = studentId;
                                 new StudentMain();
-                                dispose();
                             } else {
                                 errorDialog();
                             }
@@ -185,7 +184,6 @@ public class Home extends JFrame {
                             if (professor != null && professorId == professor.id && professorPw.equals(professor.password)) {
                                 ProfessorMain.id = professorId;
                                 new ProfessorMain();
-                                dispose();
                             } else {
                                 errorDialog();
                             }
@@ -195,7 +193,6 @@ public class Home extends JFrame {
                             String adminPw = String.valueOf(pwField.getPassword());
                             if (adminId.equals("admin") && adminPw.equals("admin")) {
                                 new AdminMain();
-                                dispose();
                             } else {
                                 errorDialog();
                             }

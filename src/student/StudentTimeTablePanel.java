@@ -1,32 +1,49 @@
-package professor;
+package student;
 
 import server.Lecture;
+import server.ServerConnection;
 
 import javax.swing.*;
-import javax.swing.border.EtchedBorder;
-import javax.swing.border.TitledBorder;
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Random;
-import java.util.StringTokenizer;
+import java.util.*;
 
-class TimeTablePanel extends JPanel {
+class StudentTimeTablePanel extends JPanel {
 
-    public TimeTablePanel() {
+    ServerConnection server = new ServerConnection();
+    int[][] timeTable;
+
+    public StudentTimeTablePanel() {
         setLayout(new GridLayout(9,6));
     }
 
-    public void updateTimeTable(ArrayList<Lecture> lecture) {
+    public void updateTimeTable(int studentId) {
         removeAll();
         revalidate();
         repaint();
 
-        int[][] timeTable = new int[9][6];
+        timeTable = new int[9][6];
 
-        for(int k =0; k<lecture.size(); k++){
-            String a = lecture.get(k).time;
-            int code = lecture.get(k).id;
+        // 서버에서 강의 목록을 가져와서,
+        // 그 강의에 해당 학생이 신청되어 있다면 시간표에 표시
+        HashMap<Integer, String> appliedLectures = new HashMap<>();  // 강의번호, 시간
+        try {
+            ArrayList<Lecture> lectures = server.getLecture();
+            for (Lecture lecture : lectures) {
+                ArrayList<Integer> appliedStudents = server.getRegisteredStudentId(lecture.id);
+                for (int appliedStudent : appliedStudents) {
+                    if (studentId == appliedStudent) {
+                        appliedLectures.put(lecture.id, lecture.time);
+                    }
+                }
+            }
+        } catch (Exception e) {
+            return;
+        }
+
+        Set<Integer> keys = appliedLectures.keySet();
+        for (int key : keys) {
+            String a = appliedLectures.get(key);
+            int code = key;
             StringTokenizer ab = new StringTokenizer(a,", ");
             int n = ab.countTokens();
 
@@ -185,7 +202,21 @@ class TimeTablePanel extends JPanel {
         }
     }
 
+    // 중복 검사를 할 때 사용하는 메소드
+    public boolean[][] getAppliedTimeTable() {
+        boolean[][] appliedTimeTable = new boolean[9][6];
+
+        for (int i = 1; i < 9; i++) {
+            for (int j = 1; j < 6; j++) {
+                if (timeTable[i][j] != 0) {
+                    appliedTimeTable[i][j] = true;
+                }
+            }
+        }
+        return appliedTimeTable;
+    }
+
     public static void main(String[] args) {
-        new TimeTablePanel();
+        new StudentTimeTablePanel();
     }
 }
